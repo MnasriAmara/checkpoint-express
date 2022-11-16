@@ -13,7 +13,7 @@ app.use(date=(req, res, next) => {
   var dateObj=new Date();
   var hours = dateObj.getHours();
   var day = dateObj.getDay();
-  if ((hours < 9 || hours > 23 || day == 0 || day == 6)) {
+  if ((hours < 9 || hours > 19 || day == 0 || day == 6)) {
    return res.send('<h1> We Are Closed </h1>');
   }
    else {
@@ -21,20 +21,21 @@ app.use(date=(req, res, next) => {
   };
 });
 
-// home
+// home page
 app.get('/', function (req, res) {
   res.sendFile(__dirname+'/views/home.html');
 });
 
-// services
+// services page
 app.get('/services', function (req, res) {
   res.sendFile(__dirname+'/views/services.html');
 });
 
-// contact
+// contact page
 app.get('/contact', function (req, res) {
   res.sendFile(__dirname+'/views/contact.html');
 });
+
 
 
 app.use(express.static(path.join(__dirname + "/views")));
