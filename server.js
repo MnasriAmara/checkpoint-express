@@ -24,21 +24,11 @@ app.use(date=(req, res, next) => {
 // home page
 app.get('/', function (req, res) {
   res.sendFile(__dirname+'/views/home.html');
-});
-
-// services page
-app.get('/services', function (req, res) {
+}).get('/services', function (req, res) {
   res.sendFile(__dirname+'/views/services.html');
-});
-
-// contact page
-app.get('/contact', function (req, res) {
+}).get('/contact', function (req, res) {
   res.sendFile(__dirname+'/views/contact.html');
-});
-
-
-
-app.use(express.static(path.join(__dirname + "/views")));
+}).use(express.static(path.join(__dirname + "/views")));
 
 
 app.listen(port, function() {
