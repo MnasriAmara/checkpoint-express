@@ -9,7 +9,7 @@ const port=3000
 
 //create middleware
 
-app.use(date=(req, res, next) => {
+app.use((req, res, next) => {
   var dateObj=new Date();
   var hours = dateObj.getHours();
   var day = dateObj.getDay();
@@ -17,7 +17,7 @@ app.use(date=(req, res, next) => {
    return res.send('<h1> We Are Closed </h1>');
   }
    else {
-    next()
+   return next()
   };
 });
 
@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname+'/views/services.html');
 }).get('/contact', function (req, res) {
   res.sendFile(__dirname+'/views/contact.html');
-}).use(express.static(path.join(__dirname + "/views")));
+}).use(express.static(path.join(__dirname , "/views")));
 
 
 app.listen(port, function() {
